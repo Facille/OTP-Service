@@ -1,0 +1,637 @@
+2025-05-09 17:42:34.221 [main] INFO  com.example.otpservice.Main - Connecting to database: jdbc:postgresql://localhost:5432/otp_service
+2025-05-09 17:42:34.478 [main] INFO  com.example.otpservice.Main - Database connection successful!
+2025-05-09 17:45:48.984 [main] INFO  c.e.o.config.DatabaseInitializer - Executing database initialization script
+2025-05-09 17:45:49.018 [main] ERROR c.e.o.config.DatabaseInitializer - Database initialization failed
+org.postgresql.util.PSQLException: ОШИБКА: ошибка синтаксиса (примерное положение: "WHERE")
+  Позиция: 579
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2725)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2412)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:371)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:502)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:419)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:341)
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:326)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:302)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:297)
+	at com.example.otpservice.config.DatabaseInitializer.initialize(DatabaseInitializer.java:46)
+	at com.example.otpservice.Main.main(Main.java:13)
+2025-05-09 17:45:49.021 [main] ERROR com.example.otpservice.Main - Application startup failed
+java.lang.RuntimeException: Failed to initialize database
+	at com.example.otpservice.config.DatabaseInitializer.initialize(DatabaseInitializer.java:51)
+	at com.example.otpservice.Main.main(Main.java:13)
+Caused by: org.postgresql.util.PSQLException: ОШИБКА: ошибка синтаксиса (примерное положение: "WHERE")
+  Позиция: 579
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2725)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2412)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:371)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:502)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:419)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:341)
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:326)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:302)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:297)
+	at com.example.otpservice.config.DatabaseInitializer.initialize(DatabaseInitializer.java:46)
+	... 1 common frames omitted
+2025-05-12 18:13:57.032 [pool-1-thread-6] ERROR c.e.o.dao.impl.PostgresUserDao - Error checking if username exists: testuser
+org.postgresql.util.PSQLException: ОШИБКА: отношение "users" не существует
+  Позиция: 22
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2725)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2412)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:371)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:502)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:419)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:194)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:137)
+	at com.example.otpservice.dao.impl.PostgresUserDao.existsByUsername(PostgresUserDao.java:91)
+	at com.example.otpservice.service.AuthService.registerUser(AuthService.java:36)
+	at com.example.otpservice.api.user.AuthApi.handle(AuthApi.java:35)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:853)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:820)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2025-05-12 18:13:57.090 [pool-1-thread-6] ERROR c.e.o.dao.impl.PostgresUserDao - Error saving user
+org.postgresql.util.PSQLException: ОШИБКА: отношение "users" не существует
+  Позиция: 13
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2725)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2412)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:371)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:502)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:419)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:194)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:137)
+	at com.example.otpservice.dao.impl.PostgresUserDao.save(PostgresUserDao.java:68)
+	at com.example.otpservice.service.AuthService.registerUser(AuthService.java:50)
+	at com.example.otpservice.api.user.AuthApi.handle(AuthApi.java:35)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:853)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:820)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2025-05-12 18:14:05.136 [pool-1-thread-6] ERROR c.e.o.dao.impl.PostgresUserDao - Error checking if username exists: testuser
+org.postgresql.util.PSQLException: ОШИБКА: отношение "users" не существует
+  Позиция: 22
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2725)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2412)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:371)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:502)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:419)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:194)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:137)
+	at com.example.otpservice.dao.impl.PostgresUserDao.existsByUsername(PostgresUserDao.java:91)
+	at com.example.otpservice.service.AuthService.registerUser(AuthService.java:36)
+	at com.example.otpservice.api.user.AuthApi.handle(AuthApi.java:35)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:853)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:820)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2025-05-12 18:14:05.179 [pool-1-thread-6] ERROR c.e.o.dao.impl.PostgresUserDao - Error saving user
+org.postgresql.util.PSQLException: ОШИБКА: отношение "users" не существует
+  Позиция: 13
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2725)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2412)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:371)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:502)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:419)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:194)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:137)
+	at com.example.otpservice.dao.impl.PostgresUserDao.save(PostgresUserDao.java:68)
+	at com.example.otpservice.service.AuthService.registerUser(AuthService.java:50)
+	at com.example.otpservice.api.user.AuthApi.handle(AuthApi.java:35)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:853)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:820)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2025-05-12 18:25:02.898 [pool-1-thread-2] ERROR c.e.o.dao.impl.PostgresUserDao - Error checking if username exists: testuser
+org.postgresql.util.PSQLException: ОШИБКА: отношение "users" не существует
+  Позиция: 22
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2725)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2412)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:371)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:502)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:419)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:194)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:137)
+	at com.example.otpservice.dao.impl.PostgresUserDao.existsByUsername(PostgresUserDao.java:91)
+	at com.example.otpservice.service.AuthService.registerUser(AuthService.java:36)
+	at com.example.otpservice.api.user.AuthApi.handle(AuthApi.java:35)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:853)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:820)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2025-05-12 18:25:02.968 [pool-1-thread-2] ERROR c.e.o.dao.impl.PostgresUserDao - Error saving user
+org.postgresql.util.PSQLException: ОШИБКА: отношение "users" не существует
+  Позиция: 13
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2725)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2412)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:371)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:502)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:419)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:194)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:137)
+	at com.example.otpservice.dao.impl.PostgresUserDao.save(PostgresUserDao.java:68)
+	at com.example.otpservice.service.AuthService.registerUser(AuthService.java:50)
+	at com.example.otpservice.api.user.AuthApi.handle(AuthApi.java:35)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:853)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:820)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2025-05-12 18:26:14.734 [pool-1-thread-3] ERROR c.e.o.dao.impl.PostgresUserDao - Error checking if username exists: testuser
+org.postgresql.util.PSQLException: ОШИБКА: отношение "users" не существует
+  Позиция: 22
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2725)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2412)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:371)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:502)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:419)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:194)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:137)
+	at com.example.otpservice.dao.impl.PostgresUserDao.existsByUsername(PostgresUserDao.java:91)
+	at com.example.otpservice.service.AuthService.registerUser(AuthService.java:36)
+	at com.example.otpservice.api.user.AuthApi.handle(AuthApi.java:35)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:853)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:820)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2025-05-12 18:26:14.791 [pool-1-thread-3] ERROR c.e.o.dao.impl.PostgresUserDao - Error saving user
+org.postgresql.util.PSQLException: ОШИБКА: отношение "users" не существует
+  Позиция: 13
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2725)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2412)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:371)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:502)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:419)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:194)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:137)
+	at com.example.otpservice.dao.impl.PostgresUserDao.save(PostgresUserDao.java:68)
+	at com.example.otpservice.service.AuthService.registerUser(AuthService.java:50)
+	at com.example.otpservice.api.user.AuthApi.handle(AuthApi.java:35)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:853)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:820)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2025-05-12 18:26:26.371 [pool-1-thread-2] ERROR c.e.o.dao.impl.PostgresUserDao - Error checking if username exists: testuser
+org.postgresql.util.PSQLException: ОШИБКА: отношение "users" не существует
+  Позиция: 22
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2725)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2412)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:371)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:502)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:419)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:194)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:137)
+	at com.example.otpservice.dao.impl.PostgresUserDao.existsByUsername(PostgresUserDao.java:91)
+	at com.example.otpservice.service.AuthService.registerUser(AuthService.java:36)
+	at com.example.otpservice.api.user.AuthApi.handle(AuthApi.java:35)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:853)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:820)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2025-05-12 18:26:26.536 [pool-1-thread-2] ERROR c.e.o.dao.impl.PostgresUserDao - Error saving user
+org.postgresql.util.PSQLException: ОШИБКА: отношение "users" не существует
+  Позиция: 13
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2725)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2412)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:371)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:502)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:419)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:194)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:137)
+	at com.example.otpservice.dao.impl.PostgresUserDao.save(PostgresUserDao.java:68)
+	at com.example.otpservice.service.AuthService.registerUser(AuthService.java:50)
+	at com.example.otpservice.api.user.AuthApi.handle(AuthApi.java:35)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:853)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:820)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2025-05-12 18:39:24.340 [pool-1-thread-2] ERROR c.e.o.dao.impl.PostgresUserDao - Error checking if username exists: testuser
+org.postgresql.util.PSQLException: ОШИБКА: отношение "users" не существует
+  Позиция: 22
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2725)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2412)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:371)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:502)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:419)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:194)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:137)
+	at com.example.otpservice.dao.impl.PostgresUserDao.existsByUsername(PostgresUserDao.java:91)
+	at com.example.otpservice.service.AuthService.registerUser(AuthService.java:36)
+	at com.example.otpservice.api.user.AuthApi.handle(AuthApi.java:35)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:853)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:820)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2025-05-12 18:39:24.405 [pool-1-thread-2] ERROR c.e.o.dao.impl.PostgresUserDao - Error saving user
+org.postgresql.util.PSQLException: ОШИБКА: отношение "users" не существует
+  Позиция: 13
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2725)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2412)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:371)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:502)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:419)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:194)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:137)
+	at com.example.otpservice.dao.impl.PostgresUserDao.save(PostgresUserDao.java:68)
+	at com.example.otpservice.service.AuthService.registerUser(AuthService.java:50)
+	at com.example.otpservice.api.user.AuthApi.handle(AuthApi.java:35)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:853)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:820)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2025-05-12 18:56:35.072 [main] INFO  c.e.o.config.DatabaseInitializer - Executing database initialization script
+2025-05-12 18:56:35.074 [main] INFO  c.e.o.config.DatabaseInitializer - Executing SQL script:
+-- Создание таблицы users
+CREATE TABLE IF NOT EXISTS users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    role VARCHAR(50) NOT NULL,
+    created_at TIMESTAMP NOT NULL
+);
+
+-- Создание таблицы otp_codes
+CREATE TABLE IF NOT EXISTS otp_codes (
+    id SERIAL PRIMARY KEY,
+    code VARCHAR(50) NOT NULL,
+    user_id INTEGER NOT NULL REFERENCES users(id),
+    operation_id VARCHAR(255) NOT NULL,
+    status VARCHAR(50) NOT NULL,
+    created_at TIMESTAMP NOT NULL,
+    expires_at TIMESTAMP NOT NULL,
+    channel VARCHAR(50) NOT NULL
+);
+
+-- Создание таблицы otp_config
+CREATE TABLE IF NOT EXISTS otp_config (
+    id SERIAL PRIMARY KEY,
+    code_length INTEGER NOT NULL,
+    expiration_minutes INTEGER NOT NULL,
+    updated_at TIMESTAMP NOT NULL
+);
+
+-- Вставка начальных данных (опционально)
+INSERT INTO otp_config (code_length, expiration_minutes, updated_at)
+VALUES (6, 5, NOW());
+2025-05-12 18:56:35.108 [main] INFO  c.e.o.config.DatabaseInitializer - Database initialized successfully
+2025-05-12 18:56:46.163 [pool-1-thread-2] ERROR c.e.o.dao.impl.PostgresUserDao - Error saving user
+org.postgresql.util.PSQLException: ОШИБКА: значение NULL в столбце "created_at" отношения "users" нарушает ограничение NOT NULL
+  Подробности: Ошибочная строка содержит (1, testuser, jZae727K08KaOmKSgOaGzww/XVqGr/PKEgIMkjrcbJI=, USER, null).
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2725)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2412)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:371)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:502)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:419)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:194)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:137)
+	at com.example.otpservice.dao.impl.PostgresUserDao.save(PostgresUserDao.java:68)
+	at com.example.otpservice.service.AuthService.registerUser(AuthService.java:50)
+	at com.example.otpservice.api.user.AuthApi.handle(AuthApi.java:35)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:853)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:820)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2025-05-12 18:58:17.460 [main] INFO  c.e.o.config.DatabaseInitializer - Executing database initialization script
+2025-05-12 18:58:17.462 [main] INFO  c.e.o.config.DatabaseInitializer - Executing SQL script:
+-- Создание таблицы users
+CREATE TABLE IF NOT EXISTS users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    role VARCHAR(50) NOT NULL,
+    created_at TIMESTAMP NOT NULL
+);
+
+-- Создание таблицы otp_codes
+CREATE TABLE IF NOT EXISTS otp_codes (
+    id SERIAL PRIMARY KEY,
+    code VARCHAR(50) NOT NULL,
+    user_id INTEGER NOT NULL REFERENCES users(id),
+    operation_id VARCHAR(255) NOT NULL,
+    status VARCHAR(50) NOT NULL,
+    created_at TIMESTAMP NOT NULL,
+    expires_at TIMESTAMP NOT NULL,
+    channel VARCHAR(50) NOT NULL
+);
+
+-- Создание таблицы otp_config
+CREATE TABLE IF NOT EXISTS otp_config (
+    id SERIAL PRIMARY KEY,
+    code_length INTEGER NOT NULL,
+    expiration_minutes INTEGER NOT NULL,
+    updated_at TIMESTAMP NOT NULL
+);
+
+-- Вставка начальных данных (опционально)
+INSERT INTO otp_config (code_length, expiration_minutes, updated_at)
+VALUES (6, 5, NOW());
+2025-05-12 18:58:17.468 [main] INFO  c.e.o.config.DatabaseInitializer - Database initialized successfully
+2025-05-12 18:58:36.253 [pool-1-thread-2] ERROR c.e.o.dao.impl.PostgresUserDao - Error saving user
+org.postgresql.util.PSQLException: ОШИБКА: значение NULL в столбце "created_at" отношения "users" нарушает ограничение NOT NULL
+  Подробности: Ошибочная строка содержит (2, testuser, jZae727K08KaOmKSgOaGzww/XVqGr/PKEgIMkjrcbJI=, USER, null).
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2725)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2412)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:371)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:502)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:419)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:194)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:137)
+	at com.example.otpservice.dao.impl.PostgresUserDao.save(PostgresUserDao.java:68)
+	at com.example.otpservice.service.AuthService.registerUser(AuthService.java:50)
+	at com.example.otpservice.api.user.AuthApi.handle(AuthApi.java:35)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:853)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:820)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2025-05-12 18:59:42.746 [pool-1-thread-4] ERROR c.e.o.dao.impl.PostgresUserDao - Error saving user
+org.postgresql.util.PSQLException: ОШИБКА: значение NULL в столбце "created_at" отношения "users" нарушает ограничение NOT NULL
+  Подробности: Ошибочная строка содержит (3, testuser, jZae727K08KaOmKSgOaGzww/XVqGr/PKEgIMkjrcbJI=, USER, null).
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2725)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2412)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:371)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:502)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:419)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:194)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:137)
+	at com.example.otpservice.dao.impl.PostgresUserDao.save(PostgresUserDao.java:68)
+	at com.example.otpservice.service.AuthService.registerUser(AuthService.java:50)
+	at com.example.otpservice.api.user.AuthApi.handle(AuthApi.java:35)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:853)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:820)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2025-05-12 19:06:21.669 [main] INFO  c.e.o.config.DatabaseInitializer - Executing database initialization script
+2025-05-12 19:06:21.670 [main] INFO  c.e.o.config.DatabaseInitializer - Executing SQL script:
+-- Создание таблицы users
+CREATE TABLE IF NOT EXISTS users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    role VARCHAR(50) NOT NULL,
+    created_at TIMESTAMP NOT NULL
+);
+
+-- Создание таблицы otp_codes
+CREATE TABLE IF NOT EXISTS otp_codes (
+    id SERIAL PRIMARY KEY,
+    code VARCHAR(50) NOT NULL,
+    user_id INTEGER NOT NULL REFERENCES users(id),
+    operation_id VARCHAR(255) NOT NULL,
+    status VARCHAR(50) NOT NULL,
+    created_at TIMESTAMP NOT NULL,
+    expires_at TIMESTAMP NOT NULL,
+    channel VARCHAR(50) NOT NULL
+);
+
+-- Создание таблицы otp_config
+CREATE TABLE IF NOT EXISTS otp_config (
+    id SERIAL PRIMARY KEY,
+    code_length INTEGER NOT NULL,
+    expiration_minutes INTEGER NOT NULL,
+    updated_at TIMESTAMP NOT NULL
+);
+
+-- Вставка начальных данных (опционально)
+INSERT INTO otp_config (code_length, expiration_minutes, updated_at)
+VALUES (6, 5, NOW());
+2025-05-12 19:06:21.676 [main] INFO  c.e.o.config.DatabaseInitializer - Database initialized successfully
+2025-05-12 19:06:44.015 [pool-1-thread-2] ERROR c.e.o.dao.impl.PostgresUserDao - Error saving user
+org.postgresql.util.PSQLException: ОШИБКА: значение NULL в столбце "created_at" отношения "users" нарушает ограничение NOT NULL
+  Подробности: Ошибочная строка содержит (4, testuser, jZae727K08KaOmKSgOaGzww/XVqGr/PKEgIMkjrcbJI=, USER, null).
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2725)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2412)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:371)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:502)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:419)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:194)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:137)
+	at com.example.otpservice.dao.impl.PostgresUserDao.save(PostgresUserDao.java:68)
+	at com.example.otpservice.service.AuthService.registerUser(AuthService.java:50)
+	at com.example.otpservice.api.user.AuthApi.handle(AuthApi.java:35)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:853)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:820)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2025-05-12 19:11:06.438 [main] INFO  c.e.o.config.DatabaseInitializer - Executing database initialization script
+2025-05-12 19:11:06.440 [main] INFO  c.e.o.config.DatabaseInitializer - Executing SQL script:
+-- Создание таблицы users
+CREATE TABLE IF NOT EXISTS users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    role VARCHAR(50) NOT NULL,
+    created_at TIMESTAMP NOT NULL
+);
+
+-- Создание таблицы otp_codes
+CREATE TABLE IF NOT EXISTS otp_codes (
+    id SERIAL PRIMARY KEY,
+    code VARCHAR(50) NOT NULL,
+    user_id INTEGER NOT NULL REFERENCES users(id),
+    operation_id VARCHAR(255) NOT NULL,
+    status VARCHAR(50) NOT NULL,
+    created_at TIMESTAMP NOT NULL,
+    expires_at TIMESTAMP NOT NULL,
+    channel VARCHAR(50) NOT NULL
+);
+
+-- Создание таблицы otp_config
+CREATE TABLE IF NOT EXISTS otp_config (
+    id SERIAL PRIMARY KEY,
+    code_length INTEGER NOT NULL,
+    expiration_minutes INTEGER NOT NULL,
+    updated_at TIMESTAMP NOT NULL
+);
+
+-- Вставка начальных данных (опционально)
+INSERT INTO otp_config (code_length, expiration_minutes, updated_at)
+VALUES (6, 5, NOW());
+2025-05-12 19:11:06.447 [main] INFO  c.e.o.config.DatabaseInitializer - Database initialized successfully
+2025-05-12 19:11:13.979 [pool-1-thread-2] ERROR c.e.o.dao.impl.PostgresUserDao - Error saving user
+org.postgresql.util.PSQLException: Индекс колонки вне диапазона: 4. Допустимые значения: 1..3
+	at org.postgresql.core.v3.SimpleParameterList.bind(SimpleParameterList.java:70)
+	at org.postgresql.core.v3.SimpleParameterList.setStringParameter(SimpleParameterList.java:139)
+	at org.postgresql.jdbc.PgPreparedStatement.bindString(PgPreparedStatement.java:1126)
+	at org.postgresql.jdbc.PgPreparedStatement.setTimestamp(PgPreparedStatement.java:1498)
+	at org.postgresql.jdbc.PgPreparedStatement.setTimestamp(PgPreparedStatement.java:439)
+	at com.example.otpservice.dao.impl.PostgresUserDao.save(PostgresUserDao.java:63)
+	at com.example.otpservice.service.AuthService.registerUser(AuthService.java:50)
+	at com.example.otpservice.api.user.AuthApi.handle(AuthApi.java:35)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:853)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:820)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2025-05-12 19:11:41.533 [main] INFO  c.e.o.config.DatabaseInitializer - Executing database initialization script
+2025-05-12 19:11:41.535 [main] INFO  c.e.o.config.DatabaseInitializer - Executing SQL script:
+-- Создание таблицы users
+CREATE TABLE IF NOT EXISTS users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    role VARCHAR(50) NOT NULL,
+    created_at TIMESTAMP NOT NULL
+);
+
+-- Создание таблицы otp_codes
+CREATE TABLE IF NOT EXISTS otp_codes (
+    id SERIAL PRIMARY KEY,
+    code VARCHAR(50) NOT NULL,
+    user_id INTEGER NOT NULL REFERENCES users(id),
+    operation_id VARCHAR(255) NOT NULL,
+    status VARCHAR(50) NOT NULL,
+    created_at TIMESTAMP NOT NULL,
+    expires_at TIMESTAMP NOT NULL,
+    channel VARCHAR(50) NOT NULL
+);
+
+-- Создание таблицы otp_config
+CREATE TABLE IF NOT EXISTS otp_config (
+    id SERIAL PRIMARY KEY,
+    code_length INTEGER NOT NULL,
+    expiration_minutes INTEGER NOT NULL,
+    updated_at TIMESTAMP NOT NULL
+);
+
+-- Вставка начальных данных (опционально)
+INSERT INTO otp_config (code_length, expiration_minutes, updated_at)
+VALUES (6, 5, NOW());
+2025-05-12 19:11:41.541 [main] INFO  c.e.o.config.DatabaseInitializer - Database initialized successfully
+2025-05-12 19:11:42.950 [pool-1-thread-2] ERROR c.e.o.dao.impl.PostgresUserDao - Error saving user
+org.postgresql.util.PSQLException: ОШИБКА: значение NULL в столбце "created_at" отношения "users" нарушает ограничение NOT NULL
+  Подробности: Ошибочная строка содержит (5, testuser, jZae727K08KaOmKSgOaGzww/XVqGr/PKEgIMkjrcbJI=, USER, null).
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2725)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2412)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:371)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:502)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:419)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:194)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:137)
+	at com.example.otpservice.dao.impl.PostgresUserDao.save(PostgresUserDao.java:68)
+	at com.example.otpservice.service.AuthService.registerUser(AuthService.java:50)
+	at com.example.otpservice.api.user.AuthApi.handle(AuthApi.java:35)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:853)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:820)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2025-05-12 19:21:56.678 [main] INFO  c.e.o.config.DatabaseInitializer - Executing database initialization script
+2025-05-12 19:21:56.680 [main] INFO  c.e.o.config.DatabaseInitializer - Executing SQL script:
+-- Создание таблицы users
+CREATE TABLE IF NOT EXISTS users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    role VARCHAR(50) NOT NULL,
+    created_at TIMESTAMP NOT NULL
+);
+
+-- Создание таблицы otp_codes
+CREATE TABLE IF NOT EXISTS otp_codes (
+    id SERIAL PRIMARY KEY,
+    code VARCHAR(50) NOT NULL,
+    user_id INTEGER NOT NULL REFERENCES users(id),
+    operation_id VARCHAR(255) NOT NULL,
+    status VARCHAR(50) NOT NULL,
+    created_at TIMESTAMP NOT NULL,
+    expires_at TIMESTAMP NOT NULL,
+    channel VARCHAR(50) NOT NULL
+);
+
+-- Создание таблицы otp_config
+CREATE TABLE IF NOT EXISTS otp_config (
+    id SERIAL PRIMARY KEY,
+    code_length INTEGER NOT NULL,
+    expiration_minutes INTEGER NOT NULL,
+    updated_at TIMESTAMP NOT NULL
+);
+
+-- Вставка начальных данных (опционально)
+INSERT INTO otp_config (code_length, expiration_minutes, updated_at)
+VALUES (6, 5, NOW());
+2025-05-12 19:21:56.687 [main] INFO  c.e.o.config.DatabaseInitializer - Database initialized successfully
